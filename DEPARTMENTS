@@ -1,0 +1,17 @@
+const { data: departments = [] } = useListDepartments({ search });
+
+const createDepartment = useCreateDepartment();
+const updateDepartment = useUpdateDepartment();
+const deleteDepartment = useDeleteDepartment();
+
+const departmentFields = [
+  { key: 'name', label: 'Department name' },
+  { key: 'manager', label: 'Department manager' },
+  { key: 'location', label: 'Campus location' },
+];
+
+const departmentPayload = (department: Department) => ({
+  name: department.name,
+  manager: department.manager,
+  location: department.location,
+});
