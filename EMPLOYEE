@@ -1,0 +1,33 @@
+const { data: employees = [] } = useListEmployees({
+  search,
+  departmentId: department ? Number(department) : undefined,
+  status: status || undefined,
+});
+
+const createEmployee = useCreateEmployee();
+const updateEmployee = useUpdateEmployee();
+const deleteEmployee = useDeleteEmployee();
+
+const employeeFields = [
+  { key: 'firstName', label: 'First name' },
+  { key: 'lastName', label: 'Last name' },
+  { key: 'email', label: 'Email', type: 'email' },
+  { key: 'phone', label: 'Phone', type: 'tel' },
+  { key: 'departmentId', label: 'Department', type: 'select' },
+  { key: 'role', label: 'Role' },
+  { key: 'shiftId', label: 'Shift', type: 'select' },
+  { key: 'status', label: 'Status', type: 'select' },
+  { key: 'joinedAt', label: 'Joined on', type: 'date' },
+];
+
+const employeePayload = (employee: Employee) => ({
+  firstName: employee.firstName,
+  lastName: employee.lastName,
+  email: employee.email,
+  phone: employee.phone,
+  departmentId: employee.departmentId,
+  role: employee.role,
+  shiftId: employee.shiftId,
+  status: employee.status,
+  joinedAt: employee.joinedAt,
+});
