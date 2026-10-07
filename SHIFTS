@@ -1,0 +1,19 @@
+const { data: shifts = [] } = useListShifts({ search });
+
+const createShift = useCreateShift();
+const updateShift = useUpdateShift();
+const deleteShift = useDeleteShift();
+
+const shiftFields = [
+  { key: 'name', label: 'Shift name' },
+  { key: 'startTime', label: 'Start time', type: 'time' },
+  { key: 'endTime', label: 'End time', type: 'time' },
+  { key: 'days', label: 'Working days', placeholder: 'Monday–Friday' },
+];
+
+const shiftPayload = (shift: Shift) => ({
+  name: shift.name,
+  startTime: shift.startTime,
+  endTime: shift.endTime,
+  days: shift.days,
+});
