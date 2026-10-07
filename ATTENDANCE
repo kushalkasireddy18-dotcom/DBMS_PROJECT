@@ -1,0 +1,26 @@
+const { data: attendance = [] } = useListAttendance({
+  search,
+  departmentId: department ? Number(department) : undefined,
+  status: status || undefined,
+  date: day || undefined,
+});
+
+const createAttendance = useCreateAttendance();
+const updateAttendance = useUpdateAttendance();
+const deleteAttendance = useDeleteAttendance();
+
+const attendanceFields = [
+  { key: 'employeeId', label: 'Employee', type: 'select' },
+  { key: 'date', label: 'Date', type: 'date' },
+  { key: 'checkIn', label: 'Check in', type: 'time' },
+  { key: 'checkOut', label: 'Check out', type: 'time' },
+  { key: 'status', label: 'Status', type: 'select' },
+];
+
+const attendancePayload = (record: Attendance) => ({
+  employeeId: record.employeeId,
+  date: record.date,
+  checkIn: record.checkIn || '',
+  checkOut: record.checkOut || '',
+  status: record.status,
+});
