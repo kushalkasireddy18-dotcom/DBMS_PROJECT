@@ -1,0 +1,31 @@
+const { data: leaves = [] } = useListLeaveRequests({
+  search,
+  departmentId: department ? Number(department) : undefined,
+  status: status || undefined,
+});
+
+const createLeaveRequest = useCreateLeaveRequest();
+const updateLeaveRequest = useUpdateLeaveRequest();
+const deleteLeaveRequest = useDeleteLeaveRequest();
+
+const leaveFields = [
+  { key: 'employeeId', label: 'Employee', type: 'select' },
+  { key: 'type', label: 'Leave type', type: 'select' },
+  { key: 'startDate', label: 'First day', type: 'date' },
+  { key: 'endDate', label: 'Last day', type: 'date' },
+  { key: 'days', label: 'Working days', type: 'number' },
+  { key: 'status', label: 'Status', type: 'select' },
+  { key: 'reason', label: 'Reason', type: 'textarea' },
+  { key: 'appliedAt', label: 'Applied on', type: 'date' },
+];
+
+const leavePayload = (request: LeaveRequest) => ({
+  employeeId: request.employeeId,
+  type: request.type,
+  startDate: request.startDate,
+  endDate: request.endDate,
+  days: request.days,
+  reason: request.reason,
+  status: request.status,
+  appliedAt: request.appliedAt,
+});
