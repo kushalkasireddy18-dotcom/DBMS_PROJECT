@@ -1,0 +1,10 @@
+const { data: dash, isLoading, isError, refetch } = useGetDashboard();
+const { data: requests = [] } = useListLeaveRequests({ status: 'Pending' });
+const { data: activityEmployees = [] } = useListEmployees();
+
+if (isLoading) return <SkeletonPage />;
+if (isError || !dash) return <ErrorState retry={() => void refetch()} />;
+
+const presentPct = dash.totalEmployees
+  ? Math.round((dash.presentToday / dash.totalEmployees) * 100)
+  : 0;
